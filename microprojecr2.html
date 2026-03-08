@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PCET Student Information System</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial;
+  background:#f5f7fb;
+}
+
+.navbar{
+  background:#003366;
+}
+
+.navbar a,.navbar-brand{
+  color:white!important;
+}
+
+.hero-title{
+  font-size:40px;
+  font-weight:bold;
+}
+
+.section-title{
+  text-align:center;
+  margin:50px 0 25px;
+  font-weight:bold;
+}
+
+.gallery img{
+  height:200px;
+  object-fit:cover;
+}
+
+footer{
+  background:#003366;
+  color:white;
+  text-align:center;
+  padding:15px;
+  margin-top:40px;
+}
+
+.fade-in{
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s;
+}
+
+.fade-in.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.btn-primary:hover {
+  background-color: #002147;
+  border-color: #002147;
+}
+
+.carousel-caption {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+</style>
+</head>
+
+<body>
+
+<!-- PROJECT TITLE -->
+<div style="background:#002147;color:white;padding:15px;text-align:center;font-weight:bold;font-size:22px">
+Design and Develop a Website to Maintain and Display Basic Academic and Personal Information of Students – PCET College
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+<div class="container">
+<a class="navbar-brand" href="#">PCET College</a>
+<button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="menu">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+<li class="nav-item"><a class="nav-link" href="#branches">Branches</a></li>
+<li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+<li class="nav-item"><a class="nav-link" href="#register">Student Form</a></li>
+<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HOME / HERO SECTION -->
+<div id="home" class="container-fluid p-0">
+
+  <!-- Image Slider -->
+  <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://i0.wp.com/institutementor.com/wp-content/uploads/2023/02/huge-3.png" class="d-block w-100" style="height:500px; object-fit:cover;" alt="Campus Image 1">
+      </div>
+      <div class="carousel-item">
+        <img src="https://pcet.org.in/images/pccoe-pcet-institute.jpg" class="d-block w-100" style="height:500px; object-fit:cover;" alt="Campus Image 2">
+      </div>
+      <div class="carousel-item">
+        <img src="https://i.ytimg.com/vi/FKXRu9yoPh4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDVVZusNkRMZq0_aU_FZ82dTsfohg" class="d-block w-100" style="height:500px; object-fit:cover;" alt="Campus Image 3">
+      </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- Topic Information Overlay -->
+  <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,0.4); padding:20px; border-radius:10px;">
+    <h2 class="hero-title">PCET Student Information System</h2>
+    <h4 style="font-weight:normal;">Organized Academic & Personal Student Records</h4>
+
+    <p style="font-size:16px; text-align:justify;">
+      The PCET Student Information System is a comprehensive web-based project developed to maintain, organize, and display academic and personal information of students in an efficient and accessible manner. 
+      The system provides a central platform where both students and faculty members can access important details related to education, courses, and personal records. 
+      This project aims to simplify the management of student data, ensuring that information is accurate, up-to-date, and easy to retrieve whenever necessary. 
+      By digitizing the academic and personal records, the college can reduce paperwork, minimize errors, and streamline administrative processes. 
+      Each student record includes information such as full name, email, phone number, branch of study, academic history, and personal address. 
+      The system also allows for storing branch-specific details like curriculum, faculty in charge, lab facilities, and department activities. 
+      Faculty members can monitor student progress, attendance, and performance in a structured format, making evaluation more transparent. 
+      The design incorporates modern UI/UX principles with responsive layouts, ensuring compatibility with desktops, tablets, and mobile devices. 
+      The student registration form is integrated into the website, allowing new admissions to enter their details securely online. 
+      With an organized gallery and branch-specific sections, the website also highlights the college’s infrastructure, labs, library, sports grounds, and extracurricular facilities. 
+      The automatic image slider on the home page presents a visual introduction to the campus, creating an engaging first impression for visitors. 
+     </>
+  </div>
+
+</div>
+<!-- ABOUT -->
+<div class="container fade-in" id="about">
+<h2 class="section-title">About PCET</h2>
+<p>
+Pimpri Chinchwad Education Trust (PCET) is a well known educational organization located in Pune, Maharashtra. The institution provides quality technical education and focuses on the academic and professional development of students.
+</p>
+<p>
+The college provides modern laboratories, experienced faculty, a large library, sports facilities, and various technical and cultural activities. The goal is to develop skilled engineers and professionals.
+</p>
+<p>
+This website project is designed to maintain and display basic academic and personal information of students in an organized and easy to understand format.
+</p>
+</div>
+
+<!-- BRANCHES -->
+<div id="branches" class="container fade-in">
+<h2 class="section-title">Engineering Branches</h2>
+<div class="accordion" id="branchAccordion">
+
+<!-- COMPUTER -->
+<div class="accordion-item">
+<h2 class="accordion-header">
+<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#comp">
+Computer Engineering
+</button>
+</h2>
+<div id="comp" class="accordion-collapse collapse show">
+<div class="accordion-body">
+<div id="compSlider" class="carousel slide mb-3" data-bs-ride="carousel">
+<div class="carousel-inner">
+<div class="carousel-item active">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoGhe_p-CjkyEB-D-Stc-0oldKsuiJCHM8AteJ_WvFNST9KFlEWYI1OxRYnUsQMZRyaSs&usqp=CAU" class="d-block w-100">
+</div>
+<div class="carousel-item">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvnoEv--YnSQ2vSpyIjfwiSE5eeFF0WliWWUW11efApCXdkQ-oUgIgjnfyCGUzM7SlII0&usqp=CAU" class="d-block w-100">
+</div>
+<div class="carousel-item">
+<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29kaW5nfGVufDB8fDB8fHww" class="d-block w-100">
+</div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#compSlider" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon"></span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#compSlider" data-bs-slide="next">
+  <span class="carousel-control-next-icon"></span>
+</button>
+</div>
+<p>
+Computer Engineering branch focuses on programming, software development, databases, networking, and computer systems.
+</p>
+</div>
+</div>
+</div>
+
+<!-- MECHANICAL -->
+<div class="accordion-item">
+<h2 class="accordion-header">
+<button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#mech">
+Mechanical Engineering
+</button>
+</h2>
+<div id="mech" class="accordion-collapse collapse">
+<div class="accordion-body">
+<div id="mechSlider" class="carousel slide mb-3" data-bs-ride="carousel">
+<div class="carousel-inner">
+<div class="carousel-item active">
+<img src="https://www.valantic.com/wp-content/uploads/fly-images/81966/success-story-schuetz-industrie-anlagenmechanikerin-2128x1330-c.jpg.webp" class="d-block w-100">
+</div>
+<div class="carousel-item">
+<img src="https://us.misumi-ec.com/blog/wp-content/uploads/2024/12/female-mechanical-engineer-at-work-2.jpg" class="d-block w-100">
+</div>
+<div class="carousel-item">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThKwpqulIomsVrAQEun8m_LZXjTHGK6RQcHrq79v7heRJ0_n-pO2GdIv-nueQKcBhbidY&usqp=CAU" class="d-block w-100">
+</div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#mechSlider" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon"></span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#mechSlider" data-bs-slide="next">
+  <span class="carousel-control-next-icon"></span>
+</button>
+</div>
+<p>
+Mechanical Engineering deals with machines, manufacturing, thermal systems, and industrial production technologies.
+</p>
+</div>
+</div>
+</div>
+
+<!-- CIVIL -->
+<div class="accordion-item">
+<h2 class="accordion-header">
+<button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#civil">
+Civil Engineering
+</button>
+</h2>
+<div id="civil" class="accordion-collapse collapse">
+<div class="accordion-body">
+<div id="civilSlider" class="carousel slide mb-3" data-bs-ride="carousel">
+<div class="carousel-inner">
+<div class="carousel-item active">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGopD1ZGjmkuH5xor2ou71TldF4uj77ljiueZxtQUHV-G0Rg3MQapz-bI&s" class="d-block w-100">
+</div>
+<div class="carousel-item">
+<img src="https://snu.edu.in/site/assets/files/15637/b.tech.civilengineering.1600x0.webp" class="d-block w-100">
+</div>
+<div class="carousel-item">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv3N4rAHQ98_9BTVvp8HFgM1AnjQDMfrw5CsEEEfRrtrFqiky7KEn3yEyIwhecMTxJ0pE&usqp=CAU" class="d-block w-100">
+</div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#civilSlider" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon"></span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#civilSlider" data-bs-slide="next">
+  <span class="carousel-control-next-icon"></span>
+</button>
+</div>
+<p>
+Civil Engineering focuses on construction, buildings, bridges, roads, and infrastructure development.
+</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- FACILITIES -->
+<div class="container fade-in">
+<h2 class="section-title">Campus Facilities</h2>
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXa5Ex38AkFiO5bz0dLQZNabivOVcudAJSapaFt5I3RWZpzXy9tgdaL8c&s" class="card-img-top">
+<div class="card-body">
+<h5>Library</h5>
+<p>Large collection of academic books and digital resources.</p>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<img src="https://www.shutterstock.com/image-photo/ciputat-indonesia-5th-july-2024-600nw-2501194647.jpg" class="card-img-top">
+<div class="card-body">
+<h5>Computer Lab</h5>
+<p>Modern computer labs for practical learning.</p>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTMcj9EPGaOYAlNPqYRzgpoGoeeDh16TmNOYGCgzHpFR-3uN7TJaW8ol0&s" class="card-img-top">
+<div class="card-body">
+<h5>Sports Ground</h5>
+<p>Playground for cricket, football, and other sports.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<!-- STUDENT FORM -->
+<div id="register" class="container fade-in">
+<h2 class="section-title">Student Registration</h2>
+<form class="row g-3">
+<div class="col-md-6">
+<label class="form-label">Full Name</label>
+<input type="text" class="form-control" required>
+</div>
+<div class="col-md-6">
+<label class="form-label">Email</label>
+<input type="email" class="form-control" required>
+</div>
+<div class="col-md-6">
+<label class="form-label">Phone</label>
+<input type="text" class="form-control" required>
+</div>
+<div class="col-md-6">
+<label class="form-label">Branch</label>
+<select class="form-select" required>
+<option>Computer Engineering</option>
+<option>Mechanical Engineering</option>
+<option>Civil Engineering</option>
+</select>
+</div>
+<div class="col-md-12">
+<label class="form-label">Address</label>
+<textarea class="form-control" required></textarea>
+</div>
+<div class="col-md-12 text-center">
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="container fade-in">
+<h2 class="section-title">Contact</h2>
+<p><b>PCET College</b></p>
+<p>Nigdi, Pune, Maharashtra</p>
+<p>Email: info@pcet.edu</p>
+<p>Phone: +91 9876543210</p>
+</div>
+
+<!-- MAP -->
+<div class="container fade-in">
+<h2 class="section-title">College Location</h2>
+<iframe src="https://maps.google.com/maps?q=pimpri%20chinchwad%20education%20trust&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="100%" height="350"></iframe>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 PCET Student Information System</p>
+</footer>
+
+<!-- JS for Fade-in -->
+<script>
+const elements=document.querySelectorAll('.fade-in');
+function showOnScroll(){
+  const trigger=window.innerHeight*0.85;
+  elements.forEach(el=>{
+    const top=el.getBoundingClientRect().top;
+    if(top<trigger){
+      el.classList.add('show');
+    }
+  });
+}
+window.addEventListener('scroll',showOnScroll);
+</script>
+
+</body>
+</html>

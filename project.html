@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PCET Student Information System</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial;
+  background:#f5f7fb;
+}
+
+.navbar{
+  background:#003366;
+}
+
+.navbar a,.navbar-brand{
+  color:white!important;
+}
+
+.hero-title{
+  font-size:40px;
+  font-weight:bold;
+}
+
+.section-title{
+  text-align:center;
+  margin:50px 0 25px;
+  font-weight:bold;
+}
+
+.gallery img, .student-card img, .card-img-top {
+  height:200px;
+  object-fit:cover;
+}
+
+footer{
+  background:#003366;
+  color:white;
+  text-align:center;
+  padding:15px;
+  margin-top:40px;
+}
+
+.fade-in{
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s;
+}
+
+.fade-in.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.btn-primary:hover {
+  background-color: #002147;
+  border-color: #002147;
+}
+
+.carousel-caption {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+.student-card{
+  background:white;
+  border-radius:10px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom:20px;
+  padding:15px;
+}
+.student-card h5{
+  font-weight:bold;
+}
+.student-card p{
+  margin-bottom:5px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PROJECT TITLE -->
+<div style="background:#002147;color:white;padding:15px;text-align:center;font-weight:bold;font-size:22px">
+Design and Develop a Website to Maintain and Display Basic Academic and Personal Information of Students – PCET College
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+<div class="container">
+<a class="navbar-brand" href="#">
+  <img src="data:image/png;base64,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" alt="PCET Logo" style="height:50px; margin-right:10px;">
+  PCET College
+</a>
+<button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="menu">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+<li class="nav-item"><a class="nav-link" href="#students">Students</a></li>
+<li class="nav-item"><a class="nav-link" href="#branches">Branches</a></li>
+<li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+<li class="nav-item"><a class="nav-link" href="#register">Student Form</a></li>
+<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HOME / HERO SECTION -->
+<div id="home" class="container-fluid p-0">
+
+  <!-- Image Slider -->
+  <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://i0.wp.com/institutementor.com/wp-content/uploads/2023/02/huge-3.png" class="d-block w-100" style="height:500px; object-fit:cover;" alt="Campus Image 1">
+      </div>
+      <div class="carousel-item">
+        <img src="https://pcet.org.in/images/pccoe-pcet-institute.jpg" class="d-block w-100" style="height:500px; object-fit:cover;" alt="Campus Image 2">
+      </div>
+      <div class="carousel-item">
+        <img src="https://i.ytimg.com/vi/FKXRu9yoPh4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDVVZusNkRMZq0_aU_FZ82dTsfohg" class="d-block w-100" style="height:500px; object-fit:cover;" alt="Campus Image 3">
+      </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- Topic Information Overlay -->
+  <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,0.4); padding:20px; border-radius:10px;">
+    <h2 class="hero-title">PCET Student Information System</h2>
+    <h4 style="font-weight:normal;">Organized Academic & Personal Student Records</h4>
+
+    <p style="font-size:16px; text-align:justify;">
+      The PCET Student Information System is a comprehensive web-based project developed to maintain, organize, and display academic and personal information of students efficiently. It covers student details, branch-specific curriculum, campus facilities, and extracurricular activities.Pimpri Chinchwad Education Trust (PCET) is a premier educational group in Pune, established in 1990, known for delivering quality education from KG to Ph.D.. It nurtures over 11,000 students across its major campuses in Akurdi, Ravet, and Sate, providing a diverse and vibrant learning environment. The institutions focus on holistic development, offering a blend of academic, co-curricular, and extracurricular activities, including student councils, clubs, and cultural fests like Swartarang. PCET’s curriculum is industry-integrated, with a strong emphasis on Outcome-Based Education (OBE) and experiential learning to prepare students for the professional.
+    </p>
+  </div>
+
+</div>
+
+<!-- ABOUT -->
+<div class="container fade-in" id="about">
+<h2 class="section-title">About PCET</h2>
+<p>
+Pimpri Chinchwad Education Trust (PCET) is a well-known educational organization located in Pune, Maharashtra. The institution provides quality technical education and focuses on the academic and professional development of students.
+</p>
+<p>
+The college provides modern laboratories, experienced faculty, a large library, sports facilities, and various technical and cultural activities. The goal is to develop skilled engineers and professionals.
+</p>
+<p>
+This website project is designed to maintain and display basic academic and personal information of students in an organized and easy-to-understand format.
+</p>
+</div>
+
+
+
+
+<!--- HOME -->
+<div id="home" class="container-fluid p-0 mb-5">
+<div class="text-center py-5" style="background:#002147;color:white;">
+<h1 class="hero-title">PCET Student Information System</h1>
+<p>Organized Academic & Personal Student Records</p>
+</div>
+</div>
+
+<!-- ABOUT -->
+<div class="container fade-in" id="about">
+<h2 class="section-title">About PCET</h2>
+<p>Pimpri Chinchwad Education Trust (PCET) is a well-known educational organization located in Pune, Maharashtra. The institution provides quality technical education and focuses on the academic and professional development of students.</p>
+<p>The college provides modern laboratories, experienced faculty, a large library, sports facilities, and various technical and cultural activities. The goal is to develop skilled engineers and professionals.</p>
+<p>This website project maintains and displays basic academic and personal information of students in an organized, easy-to-understand format.</p>
+</div>
+
+<!-- STUDENT SECTIONS -->
+<div id="sections" class="container fade-in">
+
+<!-- FUNCTION TO CREATE STUDENT CARD HTML -->
+<script>
+function studentCard(photo,name,email,facilities,sports,scholarship){
+    return `<div class="col-md-4 mb-3">
+    <div class="student-card">
+    <img src="${photo}" alt="${name}">
+    <h5>${name}</h5>
+    <p><b>Email:</b> ${email}</p>
+    <p><b>Facilities:</b> ${facilities}</p>
+    <p><b>Sports:</b> ${sports}</p>
+    <p><b>Scholarship:</b> ${scholarship}</p>
+    </div>
+    </div>`;
+}
+</script>
+<!-- IT SECTION -->
+<div class="student-section mb-5">
+  <h2 class="section-title">Information Technology</h2>
+  <img src="https://plus.unsplash.com/premium_photo-1661877737564-3dfd7282efcb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW5mb3JtYXRpb24lMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww" 
+       class="img-fluid mb-3 it-main-image" alt="IT Image">
+  <p>
+    IT students learn programming, networking, database management, software development, and cybersecurity. 
+    PCET provides modern labs, computer facilities, expert faculty, and scholarships for meritorious students.
+  </p>
+  <div class="row" id="it-students"></div>
+</div>
+
+<style>
+  /* Main IT image styling */
+  .it-main-image {
+    width: 100%;        /* Full width of container */
+    height: 400px;      /* Fixed height */
+    object-fit: cover;  /* Keeps aspect ratio, crops if needed */
+    border-radius: 8px; /* Rounded corners */
+  }
+</style>
+
+<script>
+// Function to generate a student card
+function studentCard(img, name, email, facilities, hobby, scholarship) {
+  return `
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img src="${img}" class="card-img-top" alt="${name}">
+        <div class="card-body">
+          <h5 class="card-title">${name}</h5>
+          <p class="card-text"><strong>Email:</strong> ${email}</p>
+          <p class="card-text"><strong>Facilities:</strong> ${facilities}</p>
+          <p class="card-text"><strong>Hobby:</strong> ${hobby}</p>
+          ${scholarship !== 'Sports' ? `<p class="card-text"><strong>Scholarship:</strong> ${scholarship}</p>` : ''}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Student data array
+let itStudents = [
+  ['https://randomuser.me/api/portraits/men/10.jpg','Tejas Patil','tejas@pcet.edu','Labs, Library, Internet','Cricket','Merit'],
+  ['https://randomuser.me/api/portraits/women/11.jpg','Riya Sharma','riya@pcet.edu','Labs, Library, Workshops','Volleyball','Sports'],
+  ['https://randomuser.me/api/portraits/men/12.jpg','Aarav Joshi','aarav@pcet.edu','Labs, Internet','Football','Merit'],
+  ['https://randomuser.me/api/portraits/women/13.jpg','Sanya Patel','sanya@pcet.edu','Labs, Library','Athletics','Merit'],
+  ['https://randomuser.me/api/portraits/men/14.jpg','Aditya Kumar','aditya@pcet.edu','Labs, Workshops','Cricket','Sports']
+];
+
+// Render student cards into the section
+let itHtml = '';
+itStudents.forEach(s => itHtml += studentCard(...s));
+document.getElementById('it-students').innerHTML = itHtml;
+</script>
+<!-- MECHANICAL SECTION -->
+<div class="student-section mb-5">
+  <h2 class="section-title">Mechanical Engineering</h2>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJHsA0E6GmqThwOWgVuDLCvCqUzbZ36EVs8PfG_b-po-DFw0WPoesXi1j8zxXGN4p0V4s&usqp=CAU" 
+       class="img-fluid mb-3 mech-main-image" alt="Mechanical Image">
+  <p>
+    Mechanical students focus on machines, thermodynamics, manufacturing, and production systems. 
+    PCET provides workshops, labs, expert faculty, hands-on learning, and scholarships.
+  </p>
+  <div class="row" id="mech-students"></div>
+</div>
+
+<style>
+  /* Fixed height and responsive Mechanical image */
+  .mech-main-image {
+    width: 100%;       /* Full width of container */
+    height: 400px;     /* Fixed height */
+    object-fit: cover; /* Maintain aspect ratio, crop excess */
+    border-radius: 8px; /* Optional: rounded corners */
+  }
+
+  /* Optional: responsive for smaller devices */
+  @media (max-width: 768px) {
+    .mech-main-image {
+      height: 250px;   /* Reduce height on smaller screens */
+    }
+  }
+</style>
+
+<script>
+// Reuse studentCard function from IT section
+function studentCard(img, name, email, facilities, hobby, scholarship) {
+  return `
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img src="${img}" class="card-img-top" alt="${name}">
+        <div class="card-body">
+          <h5 class="card-title">${name}</h5>
+          <p class="card-text"><strong>Email:</strong> ${email}</p>
+          <p class="card-text"><strong>Facilities:</strong> ${facilities}</p>
+          <p class="card-text"><strong>Hobby:</strong> ${hobby}</p>
+          ${scholarship !== 'Sports' ? `<p class="card-text"><strong>Scholarship:</strong> ${scholarship}</p>` : ''}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Mechanical student data
+let mechStudents = [
+  ['https://randomuser.me/api/portraits/men/20.jpg','Rahul Deshmukh','rahul@pcet.edu','Workshop, Labs','Football','Merit'],
+  ['https://randomuser.me/api/portraits/women/21.jpg','Simran Joshi','simran@pcet.edu','Workshop, Library','Volleyball','Merit'],
+  ['https://randomuser.me/api/portraits/men/22.jpg','Vikram Shah','vikram@pcet.edu','Workshop, Labs','Cricket','Sports'],
+  ['https://randomuser.me/api/portraits/women/23.jpg','Neha Patil','neha@pcet.edu','Labs, Library','Athletics','Merit'],
+  ['https://randomuser.me/api/portraits/men/24.jpg','Aditya Singh','aditya@pcet.edu','Workshop, Labs','Football','Merit']
+];
+
+// Render student cards
+let mechHtml = '';
+mechStudents.forEach(s => mechHtml += studentCard(...s));
+document.getElementById('mech-students').innerHTML = mechHtml;
+</script>
+<!-- CIVIL SECTION -->
+<div class="student-section mb-5">
+  <h2 class="section-title">Civil Engineering</h2>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNOgtRod10OvGMPNvM2C0W4KpaKoWReY79_dXZIlvynYq4wBtWL131ScmQROjXpaCfhiI&usqp=CAU" 
+       class="img-fluid mb-3 civil-main-image" alt="Civil Image">
+  <p>
+    Civil students learn construction, design, surveying, and infrastructure development. 
+    PCET provides labs, library, project guidance, sports facilities, and scholarships.
+  </p>
+  <div class="row" id="civil-students"></div>
+</div>
+
+<style>
+  /* Fixed height and responsive Civil image */
+  .civil-main-image {
+    width: 100%;       /* Full width of container */
+    height: 400px;     /* Fixed height */
+    object-fit: cover; /* Maintain aspect ratio, crop excess */
+    border-radius: 8px; /* Rounded corners */
+  }
+
+  /* Responsive adjustment for mobile */
+  @media (max-width: 768px) {
+    .civil-main-image {
+      height: 250px;   /* Smaller height on mobile */
+    }
+  }
+</style>
+
+<script>
+// Reuse studentCard function
+function studentCard(img, name, email, facilities, hobby, scholarship) {
+  return `
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img src="${img}" class="card-img-top" alt="${name}">
+        <div class="card-body">
+          <h5 class="card-title">${name}</h5>
+          <p class="card-text"><strong>Email:</strong> ${email}</p>
+          <p class="card-text"><strong>Facilities:</strong> ${facilities}</p>
+          <p class="card-text"><strong>Hobby:</strong> ${hobby}</p>
+          ${scholarship !== 'Sports' ? `<p class="card-text"><strong>Scholarship:</strong> ${scholarship}</p>` : ''}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Civil student data
+let civilStudents = [
+  ['https://randomuser.me/api/portraits/men/25.jpg','Siddharth Patil','siddharth@pcet.edu','Labs, Library','Cricket','Merit'],
+  ['https://randomuser.me/api/portraits/women/26.jpg','Priya Reddy','priya@pcet.edu','Labs, Workshops','Volleyball','Merit'],
+  ['https://randomuser.me/api/portraits/men/27.jpg','Rohan Kumar','rohan@pcet.edu','Labs, Library','Football','Sports'],
+  ['https://randomuser.me/api/portraits/women/28.jpg','Sanya Desai','sanya@pcet.edu','Labs, Internet','Athletics','Merit'],
+  ['https://randomuser.me/api/portraits/men/29.jpg','Amit Shah','amit@pcet.edu','Labs, Workshops','Cricket','Merit']
+];
+
+// Render student cards
+let civilHtml = '';
+civilStudents.forEach(s => civilHtml += studentCard(...s));
+document.getElementById('civil-students').innerHTML = civilHtml;
+</script>
+
+
+<!-- CS SECTION -->
+<div class="student-section mb-5">
+  <h2 class="section-title">Computer Science</h2>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaCO478Fq2m8MZLsryenjeQugSNvmoNmOu-aEJzFRUsvya-y9VrP3uMETzwkA20AccJMI&usqp=CAU" 
+       class="img-fluid mb-3 cs-main-image" alt="CS Image">
+  <p>
+    Computer Science students focus on algorithms, programming, AI, and software development. 
+    PCET provides labs, internet, workshops, project support, and scholarships.
+  </p>
+  <div class="row" id="cs-students"></div>
+</div>
+
+<style>
+  /* Fixed height and responsive CS image */
+  .cs-main-image {
+    width: 100%;       /* Full width of container */
+    height: 400px;     /* Fixed height */
+    object-fit: cover; /* Maintain aspect ratio, crop excess */
+    border-radius: 8px; /* Rounded corners */
+  }
+
+  /* Responsive adjustment for mobile */
+  @media (max-width: 768px) {
+    .cs-main-image {
+      height: 250px;   /* Smaller height on mobile */
+    }
+  }
+</style>
+
+<script>
+// Reuse studentCard function
+function studentCard(img, name, email, facilities, hobby, scholarship) {
+  return `
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img src="${img}" class="card-img-top" alt="${name}">
+        <div class="card-body">
+          <h5 class="card-title">${name}</h5>
+          <p class="card-text"><strong>Email:</strong> ${email}</p>
+          <p class="card-text"><strong>Facilities:</strong> ${facilities}</p>
+          <p class="card-text"><strong>Hobby:</strong> ${hobby}</p>
+          ${scholarship !== 'Sports' ? `<p class="card-text"><strong>Scholarship:</strong> ${scholarship}</p>` : ''}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// CS student data
+let csStudents = [
+  ['https://randomuser.me/api/portraits/men/35.jpg','Ankit Sharma','ankit@pcet.edu','Labs, Internet, Workshops','Badminton','Merit'],
+  ['https://randomuser.me/api/portraits/women/36.jpg','Kavya Reddy','kavya@pcet.edu','Labs, Internet','Cricket','Sports'],
+  ['https://randomuser.me/api/portraits/men/37.jpg','Rohan Mehta','rohan@pcet.edu','Labs, Library','Football','Merit'],
+  ['https://randomuser.me/api/portraits/women/38.jpg','Priya Desai','priya@pcet.edu','Labs, Workshops','Volleyball','Merit'],
+  ['https://randomuser.me/api/portraits/men/39.jpg','Aditya Nair','aditya@pcet.edu','Labs, Internet','Chess','Merit']
+];
+
+// Render student cards
+let csHtml = '';
+csStudents.forEach(s => csHtml += studentCard(...s));
+document.getElementById('cs-students').innerHTML = csHtml;
+</script>
+<!-- SPORTS SECTION -->
+<div class="student-section mb-5">
+  <h2 class="section-title">Sports & Extracurriculars</h2>
+  <img src="https://media.istockphoto.com/id/1365430041/photo/sports-collage-taekwondo-tennis-soccer-basketball-etc.jpg?s=612x612&w=0&k=20&c=bmGacyUUSIVTCd6jLwz9ofJgTXHbimybfKP6CPluN4M=" 
+       class="img-fluid mb-3 sports-main-image" alt="Sports Image">
+  <p>
+    PCET encourages students to participate in various sports and extracurricular activities. 
+    Facilities include cricket, football, basketball, athletics, and indoor games. 
+    Scholarships are provided for sports achievements.
+  </p>
+  <div class="row" id="sports-students"></div>
+</div>
+
+<style>
+  /* Fixed height and responsive Sports image */
+  .sports-main-image {
+    width: 100%;       /* Full width of container */
+    height: 400px;     /* Fixed height */
+    object-fit: cover; /* Maintain aspect ratio, crop excess */
+    border-radius: 8px; /* Rounded corners */
+  }
+
+  /* Responsive adjustment for mobile */
+  @media (max-width: 768px) {
+    .sports-main-image {
+      height: 250px;   /* Smaller height on mobile */
+    }
+  }
+</style>
+
+<script>
+// Reuse studentCard function
+function studentCard(img, name, email, facilities, hobby, scholarship) {
+  return `
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img src="${img}" class="card-img-top" alt="${name}">
+        <div class="card-body">
+          <h5 class="card-title">${name}</h5>
+          <p class="card-text"><strong>Email:</strong> ${email}</p>
+          <p class="card-text"><strong>Facilities:</strong> ${facilities}</p>
+          <p class="card-text"><strong>Hobby:</strong> ${hobby}</p>
+          ${scholarship !== 'Sports' ? `<p class="card-text"><strong>Scholarship:</strong> ${scholarship}</p>` : ''}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Sports student data
+let sportsStudents = [
+  ['https://randomuser.me/api/portraits/men/30.jpg','Jayesh Rane','jayesh@pcet.edu','Sports Ground, Gym','Football','Sports'],
+  ['https://randomuser.me/api/portraits/women/31.jpg','Neha Kulkarni','neha@pcet.edu','Gym, Library','Volleyball','Sports'],
+  ['https://randomuser.me/api/portraits/men/32.jpg','Amit Patil','amit@pcet.edu','Sports Ground','Cricket','Sports'],
+  ['https://randomuser.me/api/portraits/women/33.jpg','Simran Deshmukh','simran@pcet.edu','Gym, Library','Athletics','Sports'],
+  ['https://randomuser.me/api/portraits/men/34.jpg','Rohan Shah','rohan@pcet.edu','Sports Ground','Football','Merit']
+];
+
+// Render student cards
+let sportsHtml = '';
+sportsStudents.forEach(s => sportsHtml += studentCard(...s));
+document.getElementById('sports-students').innerHTML = sportsHtml;
+</script>
+
+
+
+
+<!-- BRANCHES -->
+<div id="branches" class="container fade-in">
+<h2 class="section-title">Engineering Branches</h2>
+<div class="accordion" id="branchAccordion">
+<!-- (Branch carousels same as your original code) -->
+</div>
+</div>
+
+<!-- FACILITIES -->
+<div class="container fade-in">
+<h2 class="section-title">Campus Facilities</h2>
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXa5Ex38AkFiO5bz0dLQZNabivOVcudAJSapaFt5I3RWZpzXy9tgdaL8c&s" class="card-img-top">
+<div class="card-body">
+<h5>Library</h5>
+<p>Large collection of academic books and digital resources.</p>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<img src="https://www.shutterstock.com/image-photo/ciputat-indonesia-5th-july-2024-600nw-2501194647.jpg" class="card-img-top">
+<div class="card-body">
+<h5>Computer Lab</h5>
+<p>Modern computer labs for practical learning.</p>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTMcj9EPGaOYAlNPqYRzgpoGoeeDh16TmNOYGCgzHpFR-3uN7TJaW8ol0&s" class="card-img-top">
+<div class="card-body">
+<h5>Sports Ground</h5>
+<p>Playground for cricket, football, and other sports.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- STUDENT FORM -->
+<div id="register" class="container fade-in">
+<h2 class="section-title">Student Registration</h2>
+<form id="studentForm" class="row g-3">
+<div class="col-md-6">
+<label class="form-label">Full Name</label>
+<input type="text" class="form-control" required>
+</div>
+<div class="col-md-6">
+<label class="form-label">Email</label>
+<input type="email" class="form-control" required>
+</div>
+<div class="col-md-6">
+<label class="form-label">Phone</label>
+<input type="text" class="form-control" required>
+</div>
+<div class="col-md-6">
+<label class="form-label">Branch</label>
+<select class="form-select" required>
+<option>Computer Engineering</option>
+<option>Mechanical Engineering</option>
+<option>Civil Engineering</option>
+</select>
+</div>
+<div class="col-md-12">
+<label class="form-label">Address</label>
+<textarea class="form-control" required></textarea>
+</div>
+<div class="col-md-12 text-center">
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="container fade-in">
+<h2 class="section-title">Contact</h2>
+<p><b>PCET College</b></p>
+<p>Nigdi, Pune, Maharashtra</p>
+<p>Email: info@pcet.edu</p>
+<p>Phone: +91 9876543210</p>
+</div>
+
+<!-- MAP -->
+<div class="container fade-in">
+<h2 class="section-title">College Location</h2>
+<iframe src="https://maps.google.com/maps?q=pimpri%20chinchwad%20education%20trust&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="100%" height="350"></iframe>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 PCET Student Information System</p>
+</footer>
+
+<!-- JS for Fade-in -->
+<script>
+const elements=document.querySelectorAll('.fade-in');
+function showOnScroll(){
+  const trigger=window.innerHeight*0.85;
+  elements.forEach(el=>{
+    const top=el.getBoundingClientRect().top;
+    if(top<trigger){
+      el.classList.add('show');
+    }
+  });
+}
+window.addEventListener('scroll',showOnScroll);
+window.addEventListener('load', showOnScroll);
+
+document.getElementById('studentForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert("Form submitted successfully!");
+});
+</script>
+
+</body>
+</html>

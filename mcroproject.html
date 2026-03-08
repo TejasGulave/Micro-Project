@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PCET Student Information System</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+html { scroll-behavior:smooth; }
+body { font-family:Arial; background:#f5f7fb; }
+.navbar { background:#003366; }
+.navbar a,.navbar-brand { color:white!important; }
+.hero-title { font-size:40px; font-weight:bold; }
+.section-title { text-align:center; margin:50px 0 25px; font-weight:bold; }
+.student-card { background:#fff; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.15); text-align:center; padding:20px; }
+.student-card img { height:150px; width:150px; object-fit:cover; border-radius:50%; margin-bottom:10px; }
+footer { background:#003366; color:white; text-align:center; padding:15px; margin-top:40px; }
+.fade-in { opacity:0; transform:translateY(30px); transition:1s; }
+.fade-in.show { opacity:1; transform:translateY(0); }
+.btn-primary:hover { background-color: #002147; border-color: #002147; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+<div class="container">
+<a class="navbar-brand" href="#"><img src="https://pcet.org.in/images/logo.png" alt="PCET Logo" style="height:40px; margin-right:10px;">PCET College</a>
+<button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#menu"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="menu">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+<li class="nav-item"><a class="nav-link" href="#sections">Student Sections</a></li>
+<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!--- HOME -->
+<div id="home" class="container-fluid p-0 mb-5">
+<div class="text-center py-5" style="background:#002147;color:white;">
+<h1 class="hero-title">PCET Student Information System</h1>
+<p>Organized Academic & Personal Student Records</p>
+</div>
+</div>
+
+<!-- ABOUT -->
+<div class="container fade-in" id="about">
+<h2 class="section-title">About PCET</h2>
+<p>Pimpri Chinchwad Education Trust (PCET) is a well-known educational organization located in Pune, Maharashtra. The institution provides quality technical education and focuses on the academic and professional development of students.</p>
+<p>The college provides modern laboratories, experienced faculty, a large library, sports facilities, and various technical and cultural activities. The goal is to develop skilled engineers and professionals.</p>
+<p>This website project maintains and displays basic academic and personal information of students in an organized, easy-to-understand format.</p>
+</div>
+
+<!-- STUDENT SECTIONS -->
+<div id="sections" class="container fade-in">
+
+<!-- FUNCTION TO CREATE STUDENT CARD HTML -->
+<script>
+function studentCard(photo,name,email,facilities,sports,scholarship){
+    return `<div class="col-md-4 mb-3">
+    <div class="student-card">
+    <img src="${photo}" alt="${name}">
+    <h5>${name}</h5>
+    <p><b>Email:</b> ${email}</p>
+    <p><b>Facilities:</b> ${facilities}</p>
+    <p><b>Sports:</b> ${sports}</p>
+    <p><b>Scholarship:</b> ${scholarship}</p>
+    </div>
+    </div>`;
+}
+</script>
+
+<!-- IT SECTION -->
+<div class="student-section mb-5">
+<h2 class="section-title">Information Technology</h2>
+<img src="https://images.unsplash.com/photo-1581091870625-d1f78e7f7e58?w=1200" class="img-fluid mb-3" alt="IT Image">
+<p>IT students learn programming, networking, database management, software development, and cybersecurity. PCET provides modern labs, computer facilities, expert faculty, and scholarships for meritorious students.</p>
+<div class="row" id="it-students"></div>
+<script>
+let itStudents = [
+['https://randomuser.me/api/portraits/men/10.jpg','Tejas Patil','tejas@pcet.edu','Labs, Library, Internet','Cricket','Merit'],
+['https://randomuser.me/api/portraits/women/11.jpg','Riya Sharma','riya@pcet.edu','Labs, Library, Workshops','Volleyball','Sports'],
+['https://randomuser.me/api/portraits/men/12.jpg','Aarav Joshi','aarav@pcet.edu','Labs, Internet','Football','Merit'],
+['https://randomuser.me/api/portraits/women/13.jpg','Sanya Patel','sanya@pcet.edu','Labs, Library','Athletics','Merit'],
+['https://randomuser.me/api/portraits/men/14.jpg','Aditya Kumar','aditya@pcet.edu','Labs, Workshops','Cricket','Sports']
+];
+let itHtml = '';
+itStudents.forEach(s=> itHtml+=studentCard(...s));
+document.getElementById('it-students').innerHTML=itHtml;
+</script>
+</div>
+
+<!-- MECHANICAL SECTION -->
+<div class="student-section mb-5">
+<h2 class="section-title">Mechanical Engineering</h2>
+<img src="https://images.unsplash.com/photo-1581093458798-3a86b84a2d21?w=1200" class="img-fluid mb-3" alt="Mechanical Image">
+<p>Mechanical students focus on machines, thermodynamics, manufacturing, and production systems. PCET provides workshops, labs, expert faculty, hands-on learning, and scholarships.</p>
+<div class="row" id="mech-students"></div>
+<script>
+let mechStudents = [
+['https://randomuser.me/api/portraits/men/20.jpg','Rahul Deshmukh','rahul@pcet.edu','Workshop, Labs','Football','Merit'],
+['https://randomuser.me/api/portraits/women/21.jpg','Simran Joshi','simran@pcet.edu','Workshop, Library','Volleyball','Merit'],
+['https://randomuser.me/api/portraits/men/22.jpg','Vikram Shah','vikram@pcet.edu','Workshop, Labs','Cricket','Sports'],
+['https://randomuser.me/api/portraits/women/23.jpg','Neha Patil','neha@pcet.edu','Labs, Library','Athletics','Merit'],
+['https://randomuser.me/api/portraits/men/24.jpg','Aditya Singh','aditya@pcet.edu','Workshop, Labs','Football','Merit']
+];
+let mechHtml = '';
+mechStudents.forEach(s=> mechHtml+=studentCard(...s));
+document.getElementById('mech-students').innerHTML=mechHtml;
+</script>
+</div>
+
+<!-- CIVIL SECTION -->
+<div class="student-section mb-5">
+<h2 class="section-title">Civil Engineering</h2>
+<img src="https://images.unsplash.com/photo-1581093438795-4d6320b0e8f6?w=1200" class="img-fluid mb-3" alt="Civil Image">
+<p>Civil students learn construction, design, surveying, and infrastructure development. PCET provides labs, library, project guidance, sports facilities, and scholarships.</p>
+<div class="row" id="civil-students"></div>
+<script>
+let civilStudents = [
+['https://randomuser.me/api/portraits/men/25.jpg','Siddharth Patil','siddharth@pcet.edu','Labs, Library','Cricket','Merit'],
+['https://randomuser.me/api/portraits/women/26.jpg','Priya Reddy','priya@pcet.edu','Labs, Workshops','Volleyball','Merit'],
+['https://randomuser.me/api/portraits/men/27.jpg','Rohan Kumar','rohan@pcet.edu','Labs, Library','Football','Sports'],
+['https://randomuser.me/api/portraits/women/28.jpg','Sanya Desai','sanya@pcet.edu','Labs, Internet','Athletics','Merit'],
+['https://randomuser.me/api/portraits/men/29.jpg','Amit Shah','amit@pcet.edu','Labs, Workshops','Cricket','Merit']
+];
+let civilHtml = '';
+civilStudents.forEach(s=> civilHtml+=studentCard(...s));
+document.getElementById('civil-students').innerHTML=civilHtml;
+</script>
+</div>
+
+<!-- SPORTS SECTION -->
+<div class="student-section mb-5">
+<h2 class="section-title">Sports & Extracurriculars</h2>
+<img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200" class="img-fluid mb-3" alt="Sports Image">
+<p>PCET encourages students to participate in various sports and extracurricular activities. Facilities include cricket, football, basketball, athletics, and indoor games. Scholarships are provided for sports achievements.</p>
+<div class="row" id="sports-students"></div>
+<script>
+let sportsStudents = [
+['https://randomuser.me/api/portraits/men/30.jpg','Jayesh Rane','jayesh@pcet.edu','Sports Ground, Gym','Football','Sports'],
+['https://randomuser.me/api/portraits/women/31.jpg','Neha Kulkarni','neha@pcet.edu','Gym, Library','Volleyball','Sports'],
+['https://randomuser.me/api/portraits/men/32.jpg','Amit Patil','amit@pcet.edu','Sports Ground','Cricket','Sports'],
+['https://randomuser.me/api/portraits/women/33.jpg','Simran Deshmukh','simran@pcet.edu','Gym, Library','Athletics','Sports'],
+['https://randomuser.me/api/portraits/men/34.jpg','Rohan Shah','rohan@pcet.edu','Sports Ground','Football','Merit']
+];
+let sportsHtml = '';
+sportsStudents.forEach(s=> sportsHtml+=studentCard(...s));
+document.getElementById('sports-students').innerHTML=sportsHtml;
+</script>
+</div>
+
+<!-- CS SECTION -->
+<div class="student-section mb-5">
+<h2 class="section-title">Computer Science</h2>
+<img src="https://images.unsplash.com/photo-1581094463146-7763272b6b33?w=1200" class="img-fluid mb-3" alt="CS Image">
+<p>Computer Science students focus on algorithms, programming, AI, and software development. PCET provides labs, internet, workshops, project support, and scholarships.</p>
+<div class="row" id="cs-students"></div>
+<script>
+let csStudents = [
+['https://randomuser.me/api/portraits/men/35.jpg','Ankit Sharma','ankit@pcet.edu','Labs, Internet, Workshops','Badminton','Merit'],
+['https://randomuser.me/api/portraits/women/36.jpg','Kavya Reddy','kavya@pcet.edu','Labs, Internet','Cricket','Sports'],
+['https://randomuser.me/api/portraits/men/37.jpg','Rohan Mehta','rohan@pcet.edu','Labs, Library','Football','Merit'],
+['https://randomuser.me/api/portraits/women/38.jpg','Priya Desai','priya@pcet.edu','Labs, Workshops','Volleyball','Merit'],
+['https://randomuser.me/api/portraits/men/39.jpg','Aditya Nair','aditya@pcet.edu','Labs, Internet','Chess','Merit']
+];
+let csHtml = '';
+csStudents.forEach(s=> csHtml+=studentCard(...s));
+document.getElementById('cs-students').innerHTML=csHtml;
+</script>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="container fade-in mb-5">
+<h2 class="section-title">Contact</h2>
+<p><b>PCET College</b></p>
+<p>Nigdi, Pune, Maharashtra</p>
+<p>Email: info@pcet.edu</p>
+<p>Phone: +91 9876543210</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 PCET Student Information System</p>
+</footer>
+
+<!-- JS for Fade-in -->
+<script>
+const elements=document.querySelectorAll('.fade-in');
+function showOnScroll(){
+  const trigger=window.innerHeight*0.85;
+  elements.forEach(el=>{
+    const top=el.getBoundingClientRect().top;
+    if(top<trigger){
+      el.classList.add('show');
+    }
+  });
+}
+window.addEventListener('scroll',showOnScroll);
+</script>
+
+</body>
+</html>
